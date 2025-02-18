@@ -20,7 +20,7 @@ namespace CompilCourseWork
 
         private void MenuItem_Open_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            var openFileDialog = new OpenFileDialog
             {
                 Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
             };
@@ -36,32 +36,32 @@ namespace CompilCourseWork
 
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(currentFilePath))
+            if (string.IsNullOrEmpty(_currentFilePath))
             {
                 MenuItem_SaveAs_Click(sender, e);
             }
             else
             {
-                SaveToFile(currentFilePath);
+                SaveToFile(_currentFilePath);
             }
         }
 
         private void MenuItem_SaveAs_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            var saveFileDialog = new SaveFileDialog
             {
                 Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
             };
             if (saveFileDialog.ShowDialog() == true)
             {
-                currentFilePath = saveFileDialog.FileName;
-                SaveToFile(currentFilePath);
+                _currentFilePath = saveFileDialog.FileName;
+                SaveToFile(_currentFilePath);
             }
         }
 
         private void SaveToFile(string filePath)
         {
-            TextRange textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
+            var textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
             File.WriteAllText(filePath, textRange.Text);
         }
 
@@ -122,7 +122,7 @@ namespace CompilCourseWork
 
         private void OpenPdf(string fileName)
         {
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
             if (File.Exists(filePath))
             {
                 Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
@@ -132,7 +132,7 @@ namespace CompilCourseWork
                 MessageBox.Show("Файл не найден: " + filePath, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        private string currentFilePath = string.Empty;
+        private string _currentFilePath = string.Empty;
         
     }
 }
