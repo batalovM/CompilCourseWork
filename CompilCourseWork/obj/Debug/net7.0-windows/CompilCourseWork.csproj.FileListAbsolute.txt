@@ -6,7 +6,6 @@ C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\MainWindow.g.cs
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork_MarkupCompile.cache
-C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork_MarkupCompile.lref
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\MainWindow.baml
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.g.resources
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.GeneratedMSBuildEditorConfig.editorconfig
@@ -28,3 +27,12 @@ C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\SharpVectors.Runtime.Wpf.dll
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.AssemblyReference.cache
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.CopyComplete
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\en\CompilCourseWork.resources.dll
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\ru\CompilCourseWork.resources.dll
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.Resources.Strings.en.resources
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.Resources.Strings.ru.resources
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.GenerateResource.cache
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\en\CompilCourseWork.resources.cs
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\en\CompilCourseWork.resources.dll
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\ru\CompilCourseWork.resources.cs
+C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\ru\CompilCourseWork.resources.dll

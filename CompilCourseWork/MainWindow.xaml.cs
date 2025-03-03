@@ -1,7 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace CompilCourseWork
@@ -12,7 +16,6 @@ namespace CompilCourseWork
         {
             InitializeComponent();
         }
-
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
         {
             InputFirst.Document.Blocks.Clear();
@@ -133,6 +136,80 @@ namespace CompilCourseWork
             }
         }
         private string _currentFilePath = string.Empty;
+
+        private void FontSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FontSizeComboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                if (double.TryParse(selectedItem.Content.ToString(), out double newSize))
+                {
+                    InputFirst.FontSize = newSize;
+                    InputSecond.FontSize = newSize;
+                    LineNumbers.FontSize = newSize;
+                }
+            }
+        }
+
+        private void UpdateLineNumbers()
+        {
+            var textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
+            var text = textRange.Text;
+            var lineCount = text.Split('\n').Length;
+
+            LineNumbers.Text = string.Join("\n", Enumerable.Range(1, lineCount));
+        }
+
+        private void InputFirst_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            LineNumberScroller.ScrollToVerticalOffset(e.VerticalOffset);
+        }
         
+        private void InputFirst_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InputFirst.TextChanged -= InputFirst_TextChanged;
+
+            TextRange textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
+            textRange.ClearAllProperties();
+
+            HighlightKeywords();
+
+            UpdateLineNumbers(); // Обновление нумерации строк
+
+            InputFirst.TextChanged += InputFirst_TextChanged;
+        }
+        private void HighlightKeywords()
+        {
+            string[] keywords = {  "fun", "val", "var", "class", "object", "interface", "if", "else", "when", "for", "while", "return",
+                "true", "false", "null", "const"  };
+            foreach (string keyword in keywords)
+            {
+                HighlightText(keyword, Brushes.Blue, FontWeights.Bold);
+            }
+        }
+        private void HighlightText(string text, Brush foreground, FontWeight fontWeight)
+        {
+            TextPointer position = InputFirst.Document.ContentStart;
+
+            while (position != null)
+            {
+                if (position.GetPointerContext(LogicalDirection.Forward) == TextPointerContext.Text)
+                {
+                    string textRun = position.GetTextInRun(LogicalDirection.Forward);
+                    int index = textRun.IndexOf(text, StringComparison.OrdinalIgnoreCase);
+
+                    if (index >= 0)
+                    {
+                        TextPointer start = position.GetPositionAtOffset(index);
+                        TextPointer end = start.GetPositionAtOffset(text.Length);
+                        TextRange range = new TextRange(start, end);
+
+                        range.ApplyPropertyValue(TextElement.ForegroundProperty, foreground);
+                        range.ApplyPropertyValue(TextElement.FontWeightProperty, fontWeight);
+                    }
+                }
+
+                position = position.GetNextContextPosition(LogicalDirection.Forward);
+            }
+        }
     }
 }

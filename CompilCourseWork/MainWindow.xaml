@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CompilCourseWork"
         mc:Ignorable="d"
         Title="Курсовая работа Компиляторы" Height="450" Width="800">
     <DockPanel>
@@ -79,11 +78,37 @@
         </StackPanel>
         <Grid Margin="5">
             <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <RichTextBox x:Name="InputFirst" Grid.Row="0" Margin="5" BorderBrush="Black" BorderThickness="1"/>
-            <RichTextBox x:Name="InputSecond" Grid.Row="1" Margin="5" BorderBrush="Black" BorderThickness="1"/>
+            <Label Grid.Row="0" Content="Размер текста:" VerticalAlignment="Center" Margin="5"/>
+            <ComboBox Grid.Row="0" x:Name="FontSizeComboBox" Width="100" Height="20" HorizontalAlignment="Left" Margin="100, 0, 0, 0" SelectionChanged="FontSizeComboBox_SelectionChanged">
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="12"/>
+                <ComboBoxItem Content="14"/>
+                <ComboBoxItem Content="16"/>
+                <ComboBoxItem Content="18"/>
+                <ComboBoxItem Content="20"/>
+                <ComboBoxItem Content="24"/>
+            </ComboBox>
+            <Grid Grid.Row="1" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Name="LineNumberScroller">
+                    <TextBox x:Name="LineNumbers" IsReadOnly="True" TextWrapping="NoWrap" Background="LightGray" FontSize="14"/>
+                </ScrollViewer>
+                <RichTextBox x:Name="InputFirst" Grid.Column="1" Margin="0" BorderBrush="Black" BorderThickness="1" FontSize="14" VerticalScrollBarVisibility="Auto" TextChanged="InputFirst_TextChanged" ScrollViewer.ScrollChanged="InputFirst_ScrollChanged">
+                    <RichTextBox.Resources>
+                        <Style TargetType="Paragraph">
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                </RichTextBox>
+            </Grid>
+            <RichTextBox x:Name="InputSecond" Grid.Row="2" Margin="5" BorderBrush="Black" IsEnabled="False" BorderThickness="1"/>
         </Grid>
     </DockPanel>
 </Window>
