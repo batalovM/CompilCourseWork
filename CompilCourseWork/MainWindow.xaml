@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Курсовая работа Компиляторы" Height="450" Width="800">
+        Closing="Window_Closing">
     <DockPanel>
         <!-- Верхнее меню -->
         <Menu DockPanel.Dock="Top">
