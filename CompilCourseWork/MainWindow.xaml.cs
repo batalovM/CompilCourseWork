@@ -86,6 +86,22 @@ namespace CompilCourseWork
             var textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
             File.WriteAllText(filePath, textRange.Text);
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(InputTextEditor.Text))
+            {
+                var result = MessageBox.Show("Вы хотите сохранить изменения?", "Подтверждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    fileManager.SaveToFile(_currentFilePath);
+                }
+                else if (result == MessageBoxResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
         {
