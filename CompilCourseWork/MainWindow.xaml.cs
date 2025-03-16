@@ -88,7 +88,7 @@ namespace CompilCourseWork
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(InputTextEditor.Text))
+            if (!string.IsNullOrWhiteSpace(InputFirst.Text))
             {
                 var result = MessageBox.Show("Вы хотите сохранить изменения?", "Подтверждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
 
