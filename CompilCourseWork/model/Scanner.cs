@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 
 class Scanner
 {
@@ -31,7 +32,7 @@ class Scanner
             {
                 ProcessNumber();
             }
-            else if (currentChar == '=' || currentChar == '+' || currentChar == '-')
+            else if (currentChar == '=')
             {
                 ProcessOperator();
             }
@@ -62,13 +63,15 @@ class Scanner
             position++;
         }
         string lexeme = input.Substring(start, position - start);
-        
+
         switch (lexeme)
         {
             case "int":
             case "const":
             case "val":
             case "Double":
+            case "Float":
+            case "Int":
                 AddToken(14, "ключевое слово", lexeme);
                 break;
             default:
@@ -104,15 +107,25 @@ class Scanner
     private void ProcessOperator()
     {
         char currentChar = input[position];
-        int code = currentChar == '=' ? 10 : 4;
-        string type = currentChar == '=' ? "оператор присваивания" : "оператор";
-
-        AddToken(code, type, currentChar.ToString());
+        AddToken(10, "оператор присваивания", currentChar.ToString());
         position++;
     }
 
     private void AddToken(int code, string type, string lexeme)
     {
         tokens.Add(new Token { Code = code, Type = type, Lexeme = lexeme, Position = $"{position - lexeme.Length + 1} по {position}" });
+    }
+}
+
+class Token
+{
+    public int Code { get; set; }
+    public string Type { get; set; }
+    public string Lexeme { get; set; }
+    public string Position { get; set; }
+
+    public override string ToString()
+    {
+        return $"Токен: {{ Code = {Code}, Type = \"{Type}\", Lexeme = \"{Lexeme}\", Position = \"{Position}\" }}";
     }
 }
