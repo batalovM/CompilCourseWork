@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,24 @@ namespace CompilCourseWork
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine("Введите строку кода для анализа:");
+            string input = "const val pi: Double = 3.14159;";
+
+            Scanner scanner = new Scanner(input);
+            List<Token> tokens = scanner.Analyze();
+
+            Console.WriteLine("\nРезультаты лексического анализа:");
+            Console.WriteLine("Код | Тип                   | Лексема | Позиция");
+            Console.WriteLine("---------------------------------------------------");
+        
+            foreach (var token in tokens)
+            {
+                Console.WriteLine($"{token.Code,3} | {token.Type,-20} | {token.Lexeme,-7} | {token.Position}");
+            }
+
+            Console.WriteLine("\nЗапуск синтаксического анализа...");
+            Parser parser = new Parser(tokens);
+            parser.Parse();
         }
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
         {
