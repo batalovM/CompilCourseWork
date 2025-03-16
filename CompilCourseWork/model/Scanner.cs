@@ -1,26 +1,27 @@
-using System;
 using System.Collections.Generic;
+
+namespace CompilCourseWork.model;
 
 class Scanner
 {
-    private string input;
-    private int position = 0;
-    private List<Token> tokens = new List<Token>();
+    private readonly string _input;
+    private int _position;
+    private readonly List<Token> _tokens = new();
 
     public Scanner(string input)
     {
-        this.input = input;
+        _input = input;
     }
 
     public List<Token> Analyze()
     {
-        while (position < input.Length)
+        while (_position < _input.Length)
         {
-            char currentChar = input[position];
+            var currentChar = _input[_position];
 
             if (char.IsWhiteSpace(currentChar))
             {
-                position++;
+                _position++;
                 continue;
             }
 
@@ -32,37 +33,36 @@ class Scanner
             {
                 ProcessNumber();
             }
-            else if (currentChar == '=')
+            else switch (currentChar)
             {
-                ProcessOperator();
-            }
-            else if (currentChar == ':')
-            {
-                AddToken(15, "двоеточие", ":");
-                position++;
-            }
-            else if (currentChar == ';')
-            {
-                AddToken(16, "конец оператора", ";");
-                position++;
-            }
-            else
-            {
-                AddToken(-1, "недопустимый символ", currentChar.ToString());
-                position++;
+                case '=':
+                    ProcessOperator();
+                    break;
+                case ':':
+                    AddToken(15, "двоеточие", ":");
+                    _position++;
+                    break;
+                case ';':
+                    AddToken(16, "конец оператора", ";");
+                    _position++;
+                    break;
+                default:
+                    AddToken(-1, "недопустимый символ", currentChar.ToString());
+                    _position++;
+                    break;
             }
         }
-        return tokens;
+        return _tokens;
     }
 
     private void ProcessIdentifierOrKeyword()
     {
-        int start = position;
-        while (position < input.Length && (char.IsLetterOrDigit(input[position]) || input[position] == '_'))
+        var start = _position;
+        while (_position < _input.Length && (char.IsLetterOrDigit(_input[_position]) || _input[_position] == '_'))
         {
-            position++;
+            _position++;
         }
-        string lexeme = input.Substring(start, position - start);
+        var lexeme = _input.Substring(start, _position - start);
 
         switch (lexeme)
         {
@@ -82,50 +82,37 @@ class Scanner
 
     private void ProcessNumber()
     {
-        int start = position;
-        bool isDouble = false;
+        var start = _position;
+        var isDouble = false;
 
-        while (position < input.Length && char.IsDigit(input[position]))
+        while (_position < _input.Length && char.IsDigit(_input[_position]))
         {
-            position++;
+            _position++;
         }
 
-        if (position < input.Length && input[position] == '.')
+        if (_position < _input.Length && _input[_position] == '.')
         {
             isDouble = true;
-            position++;
-            while (position < input.Length && char.IsDigit(input[position]))
+            _position++;
+            while (_position < _input.Length && char.IsDigit(_input[_position]))
             {
-                position++;
+                _position++;
             }
         }
 
-        string number = input.Substring(start, position - start);
+        var number = _input.Substring(start, _position - start);
         AddToken(isDouble ? 3 : 1, isDouble ? "вещественное число (Double)" : "целое без знака", number);
     }
 
     private void ProcessOperator()
     {
-        char currentChar = input[position];
+        var currentChar = _input[_position];
         AddToken(10, "оператор присваивания", currentChar.ToString());
-        position++;
+        _position++;
     }
 
     private void AddToken(int code, string type, string lexeme)
     {
-        tokens.Add(new Token { Code = code, Type = type, Lexeme = lexeme, Position = $"{position - lexeme.Length + 1} по {position}" });
-    }
-}
-
-class Token
-{
-    public int Code { get; set; }
-    public string Type { get; set; }
-    public string Lexeme { get; set; }
-    public string Position { get; set; }
-
-    public override string ToString()
-    {
-        return $"Токен: {{ Code = {Code}, Type = \"{Type}\", Lexeme = \"{Lexeme}\", Position = \"{Position}\" }}";
+        _tokens.Add(new Token { Code = code, Type = type, Lexeme = lexeme, Position = $"{_position - lexeme.Length + 1} по {_position}" });
     }
 }

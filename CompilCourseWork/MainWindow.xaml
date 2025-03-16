@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="Курсовая работа Компиляторы" Height="450" Width="800">
-        Closing="Window_Closing">
     <DockPanel>
         <!-- Верхнее меню -->
         <Menu DockPanel.Dock="Top">
@@ -44,37 +44,37 @@
         <!-- Панель с кнопками -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
             <Button x:Name="Creation" Margin="5" Click="MenuItem_New_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\create.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\create.png"></Image>
             </Button>
             <Button x:Name="Open" Margin="5" Click="MenuItem_Open_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\open.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\open.png"></Image>
             </Button>
             <Button x:Name="Save" Click="MenuItem_Save_Click" Margin="5" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\save.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\save.png"></Image>
             </Button>
             <Button x:Name="Cancel" Margin="50, 5, 5, 5" Click="MenuItem_Undo_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\cancel.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\cancel.png"></Image>
             </Button>
             <Button x:Name="Return" Margin="5" Click="MenuItem_Redo_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\return.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\return.png"></Image>
             </Button>
             <Button x:Name="Copy" Margin="5" Click="MenuItem_Copy_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\copy.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\copy.png"></Image>
             </Button>
             <Button x:Name="Cut" Margin="5" Click="MenuItem_Cut_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\cut.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\cut.png"></Image>
             </Button>
             <Button x:Name="Paste" Margin="5" Click="MenuItem_Paste_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\paste.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\paste.png"></Image>
             </Button>
-            <Button x:Name="Launch" Margin="5" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\play.png"></Image>
+            <Button x:Name="Launch" Click = "Launch_Click" Margin="5" Width="40" Height="40" Background="White">
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\play.png"></Image>
             </Button>
             <Button x:Name="Spravka" Margin="5" Click="MenuItem_Help_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\spravka.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\spravka.png"></Image>
             </Button>
             <Button x:Name="Info" Margin="5" Click="MenuItem_About_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\resources\info.png"></Image>
+                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\info.png"></Image>
             </Button>
         </StackPanel>
         <Grid Margin="5">
@@ -109,7 +109,9 @@
                     </RichTextBox.Resources>
                 </RichTextBox>
             </Grid>
+            <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" Name="LineNumberScrolle1r">
             <RichTextBox x:Name="InputSecond" Grid.Row="2" Margin="5" BorderBrush="Black" IsEnabled="False" BorderThickness="1"/>
+            </ScrollViewer>
         </Grid>
     </DockPanel>
 </Window>

@@ -3,47 +3,56 @@ using System.Collections.Generic;
 
 class Parser
 {
-    private List<Token> tokens;
-    private int position = 0;
+    private readonly List<Token> _tokens;
+    private int _position;
 
     public Parser(List<Token> tokens)
     {
-        this.tokens = tokens;
+        _tokens = tokens;
     }
 
-    public void Parse()
+    public bool Parse()
     {
-        if (ParseConstDeclaration() && position == tokens.Count)
+        if (ParseConstDeclaration() && _position == _tokens.Count)
         {
             Console.WriteLine("Синтаксический анализ завершен успешно!");
+            return true;
         }
         else
         {
-            Console.WriteLine("Синтаксическая ошибка в позиции: " + (position < tokens.Count ? tokens[position].Position : "конец входных данных"));
+            Console.WriteLine("Синтаксическая ошибка в позиции: " + (_position < _tokens.Count ? _tokens[_position].Position : "конец входных данных"));
+            return false;
         }
     }
 
     private bool ParseConstDeclaration()
     {
-        return Match(14) && Match(14) && Match(2) && Match(15) && (Match(20) || Match(21) || Match(22)) && Match(10) && ParseExpression() && Match(16);
+        return Match(14) && 
+               Match(14) && 
+               Match(2) &&  
+               Match(15) && 
+               Match(14) && 
+               Match(10) && 
+               ParseExpression() && 
+               Match(16);   
     }
 
     private bool ParseExpression()
     {
-        return Match(3); // Только вещественное число
+        return Match(3); 
     }
 
     private bool Match(int expectedCode)
     {
-        if (position >= tokens.Count)
+        if (_position >= _tokens.Count)
         {
             Console.WriteLine($"Ошибка: достигнут конец входных данных, ожидался токен с кодом {expectedCode}");
             return false;
         }
 
-        if (tokens[position].Code == expectedCode)
+        if (_tokens[_position].Code == expectedCode)
         {
-            position++;
+            _position++;
             return true;
         }
         return false;

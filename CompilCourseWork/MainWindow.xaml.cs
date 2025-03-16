@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using CompilCourseWork.model;
 using Microsoft.Win32;
 
 namespace CompilCourseWork
@@ -16,25 +17,75 @@ namespace CompilCourseWork
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine("Введите строку кода для анализа:");
-            string input = "const val pi: Double = 3.14159;";
+        }
+        private void DisplayResults(List<Token> tokens)
+        {
+            InputSecond.Document.Blocks.Clear();
+            
+            FlowDocument flowDocument = new FlowDocument();
+            
+            Table table = new Table();
+            table.CellSpacing = 5;
+            table.Background = Brushes.White;
+            
+            table.Columns.Add(new TableColumn { Width = new GridLength(100) }); 
+            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
+            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
+            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
+            
+            TableRowGroup rowGroup = new TableRowGroup();
+            TableRow headerRow = new TableRow { Background = Brushes.LightGray };
+            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Код")) { FontWeight = FontWeights.Bold }));
+            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Тип")) { FontWeight = FontWeights.Bold }));
+            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Лексема")) { FontWeight = FontWeights.Bold }));
+            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Позиция")) { FontWeight = FontWeights.Bold }));
+            rowGroup.Rows.Add(headerRow);
+            
+            foreach (var token in tokens)
+            {
+                TableRow row = new TableRow();
+                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Code.ToString()))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Type))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Lexeme))));
+                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Position))));
+                rowGroup.Rows.Add(row);
+            }
+            table.RowGroups.Add(rowGroup);
+
+            
+            flowDocument.Blocks.Add(table);
+            
+            InputSecond.Document = flowDocument;
+        }
+        private void Launch_Click(object sender, RoutedEventArgs e)
+        {
+            AnalyzeText();
+        }
+        private void AnalyzeText()
+        {
+            TextRange textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
+            string input = textRange.Text;
 
             Scanner scanner = new Scanner(input);
             List<Token> tokens = scanner.Analyze();
 
-            Console.WriteLine("\nРезультаты лексического анализа:");
-            Console.WriteLine("Код | Тип                   | Лексема | Позиция");
-            Console.WriteLine("---------------------------------------------------");
-        
-            foreach (var token in tokens)
-            {
-                Console.WriteLine($"{token.Code,3} | {token.Type,-20} | {token.Lexeme,-7} | {token.Position}");
-            }
-
-            Console.WriteLine("\nЗапуск синтаксического анализа...");
             Parser parser = new Parser(tokens);
-            parser.Parse();
+            bool isSyntaxValid = parser.Parse();
+
+            DisplayResults(tokens);
+
+            if (isSyntaxValid)
+            {
+                InputSecond.Document.Blocks.Add(new Paragraph(new Run("Синтаксический анализ завершен успешно!")) { Foreground = Brushes.Green });
+            }
+            else
+            {
+                InputSecond.Document.Blocks.Add(new Paragraph(new Run("Синтаксическая ошибка!")) { Foreground = Brushes.Red });
+            }
         }
+        
+        
+        
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
         {
             InputFirst.Document.Blocks.Clear();
@@ -88,13 +139,13 @@ namespace CompilCourseWork
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(InputFirst.Text))
+            if (!string.IsNullOrWhiteSpace(InputFirst.Document.ContentStart.ToString()))
             {
                 var result = MessageBox.Show("Вы хотите сохранить изменения?", "Подтверждение", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    fileManager.SaveToFile(_currentFilePath);
+                    SaveToFile(_currentFilePath);
                 }
                 else if (result == MessageBoxResult.Cancel)
                 {
@@ -208,7 +259,7 @@ namespace CompilCourseWork
 
             HighlightKeywords();
 
-            UpdateLineNumbers(); // Обновление нумерации строк
+            UpdateLineNumbers();
 
             InputFirst.TextChanged += InputFirst_TextChanged;
         }
