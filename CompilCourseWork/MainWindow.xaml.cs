@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using CompilCourseWork.model;
+
 using Microsoft.Win32;
 
 namespace CompilCourseWork
@@ -17,73 +17,73 @@ namespace CompilCourseWork
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void DisplayResults(List<Token> tokens)
-        {
-            InputSecond.Document.Blocks.Clear();
+           
             
-            FlowDocument flowDocument = new FlowDocument();
-            
-            Table table = new Table();
-            table.CellSpacing = 5;
-            table.Background = Brushes.White;
-            
-            table.Columns.Add(new TableColumn { Width = new GridLength(100) }); 
-            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
-            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
-            table.Columns.Add(new TableColumn { Width = new GridLength(200) }); 
-            
-            TableRowGroup rowGroup = new TableRowGroup();
-            TableRow headerRow = new TableRow { Background = Brushes.LightGray };
-            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Код")) { FontWeight = FontWeights.Bold }));
-            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Тип")) { FontWeight = FontWeights.Bold }));
-            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Лексема")) { FontWeight = FontWeights.Bold }));
-            headerRow.Cells.Add(new TableCell(new Paragraph(new Run("Позиция")) { FontWeight = FontWeights.Bold }));
-            rowGroup.Rows.Add(headerRow);
-            
-            foreach (var token in tokens)
-            {
-                TableRow row = new TableRow();
-                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Code.ToString()))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Type))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Lexeme))));
-                row.Cells.Add(new TableCell(new Paragraph(new Run(token.Position))));
-                rowGroup.Rows.Add(row);
-            }
-            table.RowGroups.Add(rowGroup);
+            // Тестовые примеры
+            string[] testCases = {
+                "const val pi: Double = 3.14159;",  // Корректный
+                "constval pi: Double = 3.14159",   // Без точки с запятой - тоже корректный
+                "constval pi: ouble = 3.14159",
+                "const val 123abc: Double = 42",       // Некорректное имя переменной
+                "const val myVar Double = 3.14",    // Пропущено двоеточие
+                "const myVar: Double = 42",            // Пропущено val
+                "val pi: Double = 3.14;"             // Пропущено const
+            };
 
-            
-            flowDocument.Blocks.Add(table);
-            
-            InputSecond.Document = flowDocument;
+            foreach (var test in testCases)
+            {
+                Console.WriteLine($"\nParsing: '{test}'");
+                Parser parser = new Parser(test);
+                parser.Parse();
+                parser.PrintErrors();
+            }
+        }
+        private string GetTextFromRichTextBox(RichTextBox richTextBox)
+        {
+            TextRange textRange = new TextRange(
+                richTextBox.Document.ContentStart,
+                richTextBox.Document.ContentEnd);
+            return textRange.Text.Trim();
         }
         private void Launch_Click(object sender, RoutedEventArgs e)
         {
-            AnalyzeText();
+            // Очищаем RichTextBox перед новым выводом
+            InputSecond.Document = new FlowDocument();
+    
+            // Получаем текст для анализа
+            string inputText = GetTextFromRichTextBox(InputFirst);
+    
+            // Создаем и запускаем парсер
+            Parser parser = new Parser(inputText);
+            parser.Parse();
+    
+            // Выводим результат в RichTextBox
+            DisplayResults(parser);
         }
-        private void AnalyzeText()
+        private void DisplayResults(Parser parser)
         {
-            TextRange textRange = new TextRange(InputFirst.Document.ContentStart, InputFirst.Document.ContentEnd);
-            string input = textRange.Text;
-
-            Scanner scanner = new Scanner(input);
-            List<Token> tokens = scanner.Analyze();
-
-            Parser parser = new Parser(tokens);
-            bool isSyntaxValid = parser.Parse();
-
-            DisplayResults(tokens);
-
-            if (isSyntaxValid)
+            FlowDocument flowDoc = new FlowDocument();
+            Paragraph paragraph = new Paragraph();
+    
+            if (parser.errors.Count == 0)
             {
-                InputSecond.Document.Blocks.Add(new Paragraph(new Run("Синтаксический анализ завершен успешно!")) { Foreground = Brushes.Green });
+                paragraph.Inlines.Add(new Run("Разбор завершен успешно!"));
             }
             else
             {
-                InputSecond.Document.Blocks.Add(new Paragraph(new Run("Синтаксическая ошибка!")) { Foreground = Brushes.Red });
-            }
-        }
+                paragraph.Inlines.Add(new Run($"Найдено {parser.errors.Count} ошибок:"));
+                paragraph.Inlines.Add(new LineBreak());
         
+                foreach (var error in parser.errors)
+                {
+                    paragraph.Inlines.Add(new Run($"Позиция {error.Position}: {error.Message}"));
+                    paragraph.Inlines.Add(new LineBreak());
+                }
+            }
+    
+            flowDoc.Blocks.Add(paragraph);
+            InputSecond.Document = flowDoc;
+        }
         
         
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
@@ -201,12 +201,12 @@ namespace CompilCourseWork
         }
         private void MenuItem_Help_Click(object sender, RoutedEventArgs e)
         {
-            OpenPdf("C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\resources\\help.pdf");
+            OpenPdf("C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\resources\\help.pdf");
         }
 
         private void MenuItem_About_Click(object sender, RoutedEventArgs e)
         {
-            OpenPdf("C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\resources\\about.pdf");
+            OpenPdf("C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\resources\\about.pdf");
         }
 
         private void OpenPdf(string fileName)
