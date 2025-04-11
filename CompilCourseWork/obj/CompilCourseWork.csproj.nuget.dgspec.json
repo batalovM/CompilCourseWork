@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj": {}
+    "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj": {
+    "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
+        "projectUniqueName": "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
         "projectName": "CompilCourseWork",
-        "projectPath": "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
+        "projectPath": "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
         "packagesPath": "C:\\Users\\batal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\obj\\",
+        "outputPath": "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\batal\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,12 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "Costura.Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "SharpVectors": {
               "target": "Package",
               "version": "[1.8.4.2, )"

@@ -44,37 +44,37 @@
         <!-- Панель с кнопками -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
             <Button x:Name="Creation" Margin="5" Click="MenuItem_New_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\create.png"></Image>
+                <Image Source="resources\create.png"></Image>
             </Button>
             <Button x:Name="Open" Margin="5" Click="MenuItem_Open_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\open.png"></Image>
+                <Image Source="resources\open.png"></Image>
             </Button>
             <Button x:Name="Save" Click="MenuItem_Save_Click" Margin="5" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\save.png"></Image>
+                <Image Source="resources\save.png"></Image>
             </Button>
             <Button x:Name="Cancel" Margin="50, 5, 5, 5" Click="MenuItem_Undo_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\cancel.png"></Image>
+                <Image Source="resources\cancel.png"></Image>
             </Button>
             <Button x:Name="Return" Margin="5" Click="MenuItem_Redo_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\return.png"></Image>
+                <Image Source="resources\return.png"></Image>
             </Button>
             <Button x:Name="Copy" Margin="5" Click="MenuItem_Copy_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\copy.png"></Image>
+                <Image Source="resources\copy.png"></Image>
             </Button>
             <Button x:Name="Cut" Margin="5" Click="MenuItem_Cut_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\cut.png"></Image>
+                <Image Source="resources\cut.png"></Image>
             </Button>
             <Button x:Name="Paste" Margin="5" Click="MenuItem_Paste_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\paste.png"></Image>
+                <Image Source="resources\paste.png"></Image>
             </Button>
             <Button x:Name="Launch" Click = "Launch_Click" Margin="5" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\play.png"></Image>
+                <Image Source="resources\play.png"></Image>
             </Button>
             <Button x:Name="Spravka" Margin="5" Click="MenuItem_Help_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\spravka.png"></Image>
+                <Image Source="resources\spravka.png"></Image>
             </Button>
             <Button x:Name="Info" Margin="5" Click="MenuItem_About_Click" Width="40" Height="40" Background="White">
-                <Image Source="C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\Resources\info.png"></Image>
+                <Image Source="resources\info.png"></Image>
             </Button>
         </StackPanel>
         <Grid Margin="5">

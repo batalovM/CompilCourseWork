@@ -36,3 +36,25 @@ C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\en\CompilCourseWork.resources.dll
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\ru\CompilCourseWork.resources.cs
 C:\Users\batal\Desktop\4 семак дерьмецо)\Моделирование\Лаба3\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\ru\CompilCourseWork.resources.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.AssemblyReference.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork_MarkupCompile.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.g.resources
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.AssemblyInfoInputs.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.AssemblyInfo.cs
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.CoreCompileInputs.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\refint\CompilCourseWork.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.pdb
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\CompilCourseWork.exe
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\CompilCourseWork.deps.json
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\CompilCourseWork.runtimeconfig.json
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\CompilCourseWork.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Debug\net7.0-windows\CompilCourseWork.pdb
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.genruntimeconfig.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\ref\CompilCourseWork.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.Fody.CopyLocal.cache
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\obj\Debug\net7.0-windows\CompilCourseWork.csproj.Fody.RuntimeCopyLocal.cache

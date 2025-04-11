@@ -5,15 +5,51 @@
         <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <PublishSingleFile>true</PublishSingleFile>
+        <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     </PropertyGroup>
 
 
     <ItemGroup>
+      <PackageReference Include="Costura.Fody" Version="6.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="SharpVectors" Version="1.8.4.2" />
     </ItemGroup>
 
 
 
+
+
+    <ItemGroup>
+      <None Remove="resources\about.pdf" />
+      <Resource Include="resources\about.pdf" />
+      <None Remove="resources\cancel.png" />
+      <Resource Include="resources\cancel.png" />
+      <None Remove="resources\copy.png" />
+      <Resource Include="resources\copy.png" />
+      <None Remove="resources\create.png" />
+      <Resource Include="resources\create.png" />
+      <None Remove="resources\cut.png" />
+      <Resource Include="resources\cut.png" />
+      <None Remove="resources\help.pdf" />
+      <Resource Include="resources\help.pdf" />
+      <None Remove="resources\info.png" />
+      <Resource Include="resources\info.png" />
+      <None Remove="resources\open.png" />
+      <Resource Include="resources\open.png" />
+      <None Remove="resources\paste.png" />
+      <Resource Include="resources\paste.png" />
+      <None Remove="resources\play.png" />
+      <Resource Include="resources\play.png" />
+      <None Remove="resources\return.png" />
+      <Resource Include="resources\return.png" />
+      <None Remove="resources\save.png" />
+      <Resource Include="resources\save.png" />
+      <None Remove="resources\spravka.png" />
+      <Resource Include="resources\spravka.png" />
+    </ItemGroup>
 
 
 </Project>

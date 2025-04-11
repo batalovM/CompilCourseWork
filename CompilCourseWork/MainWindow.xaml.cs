@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-
+using CompilCourseWork.model;
 using Microsoft.Win32;
 
 namespace CompilCourseWork
@@ -17,25 +17,14 @@ namespace CompilCourseWork
         public MainWindow()
         {
             InitializeComponent();
-           
-            
-            // Тестовые примеры
-            string[] testCases = {
-                "const val pi: Double = 3.14159;",  // Корректный
-                "constval pi: Double = 3.14159",   // Без точки с запятой - тоже корректный
-                "constval pi: ouble = 3.14159",
-                "const val 123abc: Double = 42",       // Некорректное имя переменной
-                "const val myVar Double = 3.14",    // Пропущено двоеточие
-                "const myVar: Double = 42",            // Пропущено val
-                "val pi: Double = 3.14;"             // Пропущено const
-            };
-
-            foreach (var test in testCases)
+            Parser parser = new Parser();
+            string input = "const val pi: Double = 3.14;";
+        
+            List<string> result = parser.Parse(input);
+        
+            foreach (var message in result)
             {
-                Console.WriteLine($"\nParsing: '{test}'");
-                Parser parser = new Parser(test);
-                parser.Parse();
-                parser.PrintErrors();
+                Console.WriteLine(message);
             }
         }
         private string GetTextFromRichTextBox(RichTextBox richTextBox)
@@ -45,6 +34,7 @@ namespace CompilCourseWork
                 richTextBox.Document.ContentEnd);
             return textRange.Text.Trim();
         }
+
         private void Launch_Click(object sender, RoutedEventArgs e)
         {
             // Очищаем RichTextBox перед новым выводом
@@ -54,33 +44,34 @@ namespace CompilCourseWork
             string inputText = GetTextFromRichTextBox(InputFirst);
     
             // Создаем и запускаем парсер
-            Parser parser = new Parser(inputText);
-            parser.Parse();
+            Parser parser = new Parser();
+            List<string> parseResults = parser.Parse(inputText);
     
             // Выводим результат в RichTextBox
-            DisplayResults(parser);
+            DisplayResults(parseResults);
         }
-        private void DisplayResults(Parser parser)
+
+        private void DisplayResults(List<string> parseResults)
         {
             FlowDocument flowDoc = new FlowDocument();
             Paragraph paragraph = new Paragraph();
-    
-            if (parser.errors.Count == 0)
+
+            if (parseResults.Count == 0)
             {
                 paragraph.Inlines.Add(new Run("Разбор завершен успешно!"));
             }
             else
             {
-                paragraph.Inlines.Add(new Run($"Найдено {parser.errors.Count} ошибок:"));
+                paragraph.Inlines.Add(new Run($"Найдено {parseResults.Count} ошибок:"));
                 paragraph.Inlines.Add(new LineBreak());
-        
-                foreach (var error in parser.errors)
+
+                foreach (var message in parseResults)
                 {
-                    paragraph.Inlines.Add(new Run($"Позиция {error.Position}: {error.Message}"));
+                    paragraph.Inlines.Add(new Run(message));
                     paragraph.Inlines.Add(new LineBreak());
                 }
             }
-    
+
             flowDoc.Blocks.Add(paragraph);
             InputSecond.Document = flowDoc;
         }

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xoo1Lb0fidnVqYG8MY0FOKtaVFxPiotd2AKZ2ZlWQdcBQ7OFw/p3oHanzMeJREKV9e2yNS2qwekEm7wcR2KKmQ==",
+  "dgSpecHash": "QwqanpAu0WKi3Z5YqRvc7ip5H+q+IAWEQC2Sd2yL2w9/zAfI3Qa78drAvhcb9iZje6VLtxzOL1pAwli//hrkWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\batal\\Desktop\\4 семак дерьмецо)\\Моделирование\\Лаба3\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
+  "projectFilePath": "C:\\Users\\batal\\RiderProjects\\CompilCourseWork\\CompilCourseWork\\CompilCourseWork.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\batal\\.nuget\\packages\\costura.fody\\6.0.0\\costura.fody.6.0.0.nupkg.sha512",
+    "C:\\Users\\batal\\.nuget\\packages\\fody\\6.8.2\\fody.6.8.2.nupkg.sha512",
     "C:\\Users\\batal\\.nuget\\packages\\sharpvectors\\1.8.4.2\\sharpvectors.1.8.4.2.nupkg.sha512"
   ],
   "logs": []
