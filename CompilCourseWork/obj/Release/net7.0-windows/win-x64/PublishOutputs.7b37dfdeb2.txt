@@ -1,0 +1,2 @@
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\win-x64\publish\CompilCourseWork.pdb
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\win-x64\publish\CompilCourseWork.exe

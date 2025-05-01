@@ -24,6 +24,15 @@
 
     <ItemGroup>
       <None Remove="resources\about.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\Diagnosis_and_neutralization_of_errors.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\Grammar.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\Grammar_Classification.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\Listing.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\List_of_literature.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\TaskStatement.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\The_method_of_analysis.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\Users_Guide.pdf" />
+      <None Include="bin\Release\net7.0-windows\win-x64\publish\TextFolder\A_test_case.pdf" />
       <Resource Include="resources\about.pdf" />
       <None Remove="resources\cancel.png" />
       <Resource Include="resources\cancel.png" />
@@ -34,7 +43,9 @@
       <None Remove="resources\cut.png" />
       <Resource Include="resources\cut.png" />
       <None Remove="resources\help.pdf" />
-      <Resource Include="resources\help.pdf" />
+      <Resource Include="resources\help.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
       <None Remove="resources\info.png" />
       <Resource Include="resources\info.png" />
       <None Remove="resources\open.png" />
@@ -50,6 +61,16 @@
       <None Remove="resources\spravka.png" />
       <Resource Include="resources\spravka.png" />
     </ItemGroup>
+
+
+
+
+
+
+
+
+
+
 
 
 </Project>

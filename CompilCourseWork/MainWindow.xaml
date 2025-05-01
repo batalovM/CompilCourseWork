@@ -26,16 +26,16 @@
                 <MenuItem Click="MenuItem_SelectAll_Click" Header="Выделить все"/>
             </MenuItem>
             <MenuItem Header="Текст">
-                <MenuItem Header="Постановка задачи"/>
-                <MenuItem Header="Грамматика"/>
-                <MenuItem Header="Классификация грамматики"/>
-                <MenuItem Header="Метод анализа"/>
-                <MenuItem Header="Диагностика и нейтрализация ошибок"/>
-                <MenuItem Header="Тестовый пример"/>
-                <MenuItem Header="Список литературы"/>
-                <MenuItem Header="Исходный код программы"/>
+                <MenuItem Header="Постановка задачи" Click="TextTaskStatement_Click" />
+                <MenuItem Header="Грамматика" Click="TextGrammar_Click"/>
+                <MenuItem Header="Классификация грамматики" Click="TextGrammarClassification_Click" />
+                <MenuItem Header="Метод анализа" Click="TextAnalysisMethod_Click"/>
+                <MenuItem Header="Диагностика и нейтрализация ошибок" Click="TextErrorDiagnostics_Click" />
+                <MenuItem Header="Тестовый пример" Click="TextTestExample_Click" />
+                <MenuItem Header="Список литературы" Click="TextBibliography_Click" />
+                <MenuItem Header="Исходный код программы" Click="TextSourceCode_Click" />
             </MenuItem>
-            <MenuItem Header="Пуск"/>
+            <MenuItem Header="Пуск" Click = "Launch_Click" />
             <MenuItem Header="Справка">
                 <MenuItem Click="MenuItem_Help_Click" Header="Вызов справки"/>
                 <MenuItem Click="MenuItem_About_Click" Header="О программе"/>

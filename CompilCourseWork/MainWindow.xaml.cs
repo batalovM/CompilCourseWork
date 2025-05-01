@@ -14,18 +14,19 @@ namespace CompilCourseWork
 {
     public partial class MainWindow
     {
+        private TextManager textManager = new TextManager();
         public MainWindow()
         {
             InitializeComponent();
-            Parser parser = new Parser();
-            string input = "const val pi: Double = 3.14;";
-        
-            List<string> result = parser.Parse(input);
-        
-            foreach (var message in result)
-            {
-                Console.WriteLine(message);
-            }
+            // Parser parser = new Parser();
+            // string input = "const val pi: Double= 3.14;";
+            //
+            // List<string> result = parser.Parse(input);
+            //
+            // foreach (var message in result)
+            // {
+            //     Console.WriteLine(message);
+            // }
         }
         private string GetTextFromRichTextBox(RichTextBox richTextBox)
         {
@@ -34,47 +35,98 @@ namespace CompilCourseWork
                 richTextBox.Document.ContentEnd);
             return textRange.Text.Trim();
         }
-
+        // private void Launch_Click(object sender, RoutedEventArgs e)
+        // {
+        //     InputSecond.Document = new FlowDocument();
+        //     string inputText = GetTextFromRichTextBox(InputFirst);
+        //     Parser parser = new Parser();
+        //     List<string> parseResults = parser.Parse(inputText);
+        //     DisplayResults(parseResults);
+        // }
+        // private void DisplayResults(List<string> parseResults)
+        // {
+        //     FlowDocument flowDoc = new FlowDocument();
+        //     Paragraph paragraph = new Paragraph();
+        //     if (parseResults.Count == 0)
+        //     {
+        //         paragraph.Inlines.Add(new Run("Разбор завершен успешно!"));
+        //     }
+        //     else
+        //     {
+        //         paragraph.Inlines.Add(new Run($"Найдено {parseResults.Count} ошибок:"));
+        //         paragraph.Inlines.Add(new LineBreak());
+        //         foreach (var message in parseResults)
+        //         {
+        //             paragraph.Inlines.Add(new Run(message));
+        //             paragraph.Inlines.Add(new LineBreak());
+        //         }
+        //     }
+        //     flowDoc.Blocks.Add(paragraph);
+        //     InputSecond.Document = flowDoc;
+        // }
         private void Launch_Click(object sender, RoutedEventArgs e)
+{
+    InputSecond.Document = new FlowDocument();
+    string inputText = GetTextFromRichTextBox(InputFirst);
+    
+    try
+    {
+        var lexer = new Lexer(inputText);
+        var parser = new Parser(lexer);
+        var result = parser.Parse();
+        
+        DisplayResults(parser.Tetrads, null);
+    }
+    catch (Exception ex)
+    {
+        DisplayResults(null, new List<string> { ex.Message });
+    }
+}
+
+private void DisplayResults(List<Tetrad> tetrads, List<string> errors)
+{
+    FlowDocument flowDoc = new FlowDocument();
+    Paragraph paragraph = new Paragraph();
+
+    if (errors != null && errors.Count > 0)
+    {
+        // Вывод ошибок
+        paragraph.Inlines.Add(new Run($"Найдено {errors.Count} ошибок:") { Foreground = Brushes.Red });
+        paragraph.Inlines.Add(new LineBreak());
+        
+        foreach (var error in errors)
         {
-            // Очищаем RichTextBox перед новым выводом
-            InputSecond.Document = new FlowDocument();
-    
-            // Получаем текст для анализа
-            string inputText = GetTextFromRichTextBox(InputFirst);
-    
-            // Создаем и запускаем парсер
-            Parser parser = new Parser();
-            List<string> parseResults = parser.Parse(inputText);
-    
-            // Выводим результат в RichTextBox
-            DisplayResults(parseResults);
+            paragraph.Inlines.Add(new Run(error) { Foreground = Brushes.Red });
+            paragraph.Inlines.Add(new LineBreak());
         }
-
-        private void DisplayResults(List<string> parseResults)
+    }
+    else if (tetrads != null && tetrads.Count > 0)
+    {
+        // Вывод успешного разбора и тетрад
+        paragraph.Inlines.Add(new Run("Разбор завершен успешно!") { Foreground = Brushes.Green });
+        paragraph.Inlines.Add(new LineBreak());
+        paragraph.Inlines.Add(new LineBreak());
+        
+        paragraph.Inlines.Add(new Run("Сгенерированные тетрады:") { FontWeight = FontWeights.Bold });
+        paragraph.Inlines.Add(new LineBreak());
+        
+        for (int i = 0; i < tetrads.Count; i++)
         {
-            FlowDocument flowDoc = new FlowDocument();
-            Paragraph paragraph = new Paragraph();
-
-            if (parseResults.Count == 0)
-            {
-                paragraph.Inlines.Add(new Run("Разбор завершен успешно!"));
-            }
-            else
-            {
-                paragraph.Inlines.Add(new Run($"Найдено {parseResults.Count} ошибок:"));
-                paragraph.Inlines.Add(new LineBreak());
-
-                foreach (var message in parseResults)
-                {
-                    paragraph.Inlines.Add(new Run(message));
-                    paragraph.Inlines.Add(new LineBreak());
-                }
-            }
-
-            flowDoc.Blocks.Add(paragraph);
-            InputSecond.Document = flowDoc;
+            paragraph.Inlines.Add(new Run($"{i + 1}: {tetrads[i]}"));
+            paragraph.Inlines.Add(new LineBreak());
         }
+        
+        paragraph.Inlines.Add(new LineBreak());
+        paragraph.Inlines.Add(new Run($"Результат: {tetrads.Last().Result}") { FontWeight = FontWeights.Bold });
+    }
+    else
+    {
+        paragraph.Inlines.Add(new Run("Нет данных для отображения."));
+    }
+
+    flowDoc.Blocks.Add(paragraph);
+    InputSecond.Document = flowDoc;
+}
         
         
         private void MenuItem_New_Click(object sender, RoutedEventArgs e)
@@ -287,6 +339,44 @@ namespace CompilCourseWork
 
                 position = position.GetNextContextPosition(LogicalDirection.Forward);
             }
+        }
+        private void TextTaskStatement_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenTaskStatement();
+        }
+        private void TextGrammar_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenGrammar();
+        }
+
+        private void TextGrammarClassification_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenGrammarClassification();
+        }
+
+        private void TextAnalysisMethod_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenAnalysisMethod();
+        }
+
+        private void TextErrorDiagnostics_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenErrorDiagnostics();
+        }
+
+        private void TextTestExample_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenTestExample();
+        }
+
+        private void TextBibliography_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenBibliography();
+        }
+
+        private void TextSourceCode_Click(object sender, RoutedEventArgs e)
+        {
+            textManager.OpenSourceCode();
         }
     }
 }

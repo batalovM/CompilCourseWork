@@ -1,0 +1,13 @@
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\CompilCourseWork.exe
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\CompilCourseWork.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\CompilCourseWork.deps.json
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\CompilCourseWork.runtimeconfig.json
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\CompilCourseWork.pdb
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Converters.Wpf.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Core.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Css.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Dom.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Model.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Rendering.Gdi.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Rendering.Wpf.dll
+C:\Users\batal\RiderProjects\CompilCourseWork\CompilCourseWork\bin\Release\net7.0-windows\publish\SharpVectors.Runtime.Wpf.dll
