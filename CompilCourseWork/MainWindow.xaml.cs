@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -26,6 +27,51 @@ namespace CompilCourseWork
             {
                 Console.WriteLine(message);
             }
+        }
+        private void FindFWords_Click(object sender, RoutedEventArgs e)
+        {
+            string text = GetTextFromRichTextBox(InputFirst);
+            Regex regex = new Regex(@"\b[fF]\w*\b");
+            var matches = regex.Matches(text);
+    
+            ShowMatchesInSecondBox(matches, "Слова на F/f:");
+        }
+
+        private void CheckISBN_Click(object sender, RoutedEventArgs e)
+        {
+            string text = GetTextFromRichTextBox(InputFirst);
+            Regex regex = new Regex(@"97[89][- ]?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,6}[- ]?\d");
+            var matches = regex.Matches(text);
+    
+            ShowMatchesInSecondBox(matches, "Найденные ISBN-13:");
+        }
+
+        private void CheckTime_Click(object sender, RoutedEventArgs e)
+        {
+            string text = GetTextFromRichTextBox(InputFirst);
+            Regex regex = new Regex(@"(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d");
+            var matches = regex.Matches(text);
+    
+            ShowMatchesInSecondBox(matches, "Найденное время:");
+        }
+
+        private void ShowMatchesInSecondBox(MatchCollection matches, string title)
+        {
+            FlowDocument flowDoc = new FlowDocument();
+            Paragraph paragraph = new Paragraph();
+    
+            paragraph.Inlines.Add(new Run($"{title} найдено {matches.Count} совпадений"));
+            paragraph.Inlines.Add(new LineBreak());
+            paragraph.Inlines.Add(new LineBreak());
+
+            foreach (Match match in matches)
+            {
+                paragraph.Inlines.Add(new Run(match.Value));
+                paragraph.Inlines.Add(new LineBreak());
+            }
+
+            flowDoc.Blocks.Add(paragraph);
+            InputSecond.Document = flowDoc;
         }
         private string GetTextFromRichTextBox(RichTextBox richTextBox)
         {

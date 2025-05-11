@@ -76,6 +76,18 @@
             <Button x:Name="Info" Margin="5" Click="MenuItem_About_Click" Width="40" Height="40" Background="White">
                 <Image Source="resources\info.png"></Image>
             </Button>
+            <!-- После существующих кнопок добавим: -->
+            <Button x:Name="FindFWords" Margin="5" Click="FindFWords_Click" Width="40" Height="40" Background="White" ToolTip="Найти слова на F/f">
+                <TextBlock Text="F" FontWeight="Bold" FontSize="16"/>
+            </Button>
+
+            <Button x:Name="CheckISBN" Margin="5" Click="CheckISBN_Click" Width="40" Height="40" Background="White" ToolTip="Проверить ISBN-13">
+                <TextBlock Text="ISBN" FontWeight="Bold" FontSize="10"/>
+            </Button>
+
+            <Button x:Name="CheckTime" Margin="5" Click="CheckTime_Click" Width="40" Height="40" Background="White" ToolTip="Проверить время ЧЧ:ММ:СС">
+                <TextBlock Text="Время" FontSize="10"/>
+            </Button>
         </StackPanel>
         <Grid Margin="5">
             <Grid.RowDefinitions>
