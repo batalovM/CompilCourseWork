@@ -1,4 +1,5 @@
 # Лаба 6
+23:59:59
 ![{990E857D-088D-400E-B7B2-B1ADB560C1D9}](https://github.com/user-attachments/assets/f23b72d1-baf0-4e8b-84ba-513d06c50cbc)
 
 # Руководство пользователя для текстового редактора
