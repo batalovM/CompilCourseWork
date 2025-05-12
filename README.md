@@ -1,19 +1,3 @@
-
-# Лаба 5
-
-
-
-# Лаба 6
-![{990E857D-088D-400E-B7B2-B1ADB560C1D9}](https://github.com/user-attachments/assets/f23b72d1-baf0-4e8b-84ba-513d06c50cbc)
-# Тестовыe примеры
-1. Построить РВ для того, чтобы сопоставить все слова, которые
-начинаются на букву f или F.
-2. Построить РВ для проверки ISBN-13
-3. Построить РВ, описывающее время. Формат: ЧЧ:ММ:СС в 24-часовом формате с обязательным ведущим 0
-
-![{9D740DF8-7EED-45E1-9688-A83EF795FFED}](https://github.com/user-attachments/assets/8e9dc69d-fc48-495e-a0aa-ef92e433c28f)
-![{F87B0726-6F49-4ED3-8122-A0ED448E15D9}](https://github.com/user-attachments/assets/effd1bcc-9d8a-405b-82e6-80df28401122)
-![{002E0FD5-BA91-4D71-BEE0-FD3E3F55C091}](https://github.com/user-attachments/assets/d9abbc8e-50e0-41d1-9ac5-747f2e4e85d9)
 # Руководство пользователя для текстового редактора
 
 ## Введение
@@ -122,7 +106,17 @@ Type:
 
 
 
+# Лаба 6
+![{990E857D-088D-400E-B7B2-B1ADB560C1D9}](https://github.com/user-attachments/assets/f23b72d1-baf0-4e8b-84ba-513d06c50cbc)
+# Тестовыe примеры
+1. Построить РВ для того, чтобы сопоставить все слова, которые
+начинаются на букву f или F.
+2. Построить РВ для проверки ISBN-13
+3. Построить РВ, описывающее время. Формат: ЧЧ:ММ:СС в 24-часовом формате с обязательным ведущим 0
 
+![{9D740DF8-7EED-45E1-9688-A83EF795FFED}](https://github.com/user-attachments/assets/8e9dc69d-fc48-495e-a0aa-ef92e433c28f)
+![{F87B0726-6F49-4ED3-8122-A0ED448E15D9}](https://github.com/user-attachments/assets/effd1bcc-9d8a-405b-82e6-80df28401122)
+![{002E0FD5-BA91-4D71-BEE0-FD3E3F55C091}](https://github.com/user-attachments/assets/d9abbc8e-50e0-41d1-9ac5-747f2e4e85d9)
 
 
 
