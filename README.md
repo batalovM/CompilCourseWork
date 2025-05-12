@@ -118,6 +118,9 @@ Type:
 ![{F87B0726-6F49-4ED3-8122-A0ED448E15D9}](https://github.com/user-attachments/assets/effd1bcc-9d8a-405b-82e6-80df28401122)
 ![{002E0FD5-BA91-4D71-BEE0-FD3E3F55C091}](https://github.com/user-attachments/assets/d9abbc8e-50e0-41d1-9ac5-747f2e4e85d9)
 
+1. @"\b[fF]\w*\b"
+2. @"97[89][- ]?\d{1,5}[- ]?\d{1,7}[- ]?\d{1,6}[- ]?\d"
+3. @"(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d"
 
 
 
