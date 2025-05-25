@@ -85,14 +85,21 @@ namespace CompilCourseWork
         {
             // Очищаем RichTextBox перед новым выводом
             InputSecond.Document = new FlowDocument();
-    
+
             // Получаем текст для анализа
             string inputText = GetTextFromRichTextBox(InputFirst);
-    
-            // Создаем и запускаем парсер
-            Parser parser = new Parser();
-            List<string> parseResults = parser.Parse(inputText);
-    
+
+            // Создаем и запускаем парсер, захватывая консольный вывод
+            List<string> parseResults = new List<string>();
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw); // Перенаправляем консольный вывод в StringWriter
+                ParseLaba8 parser = new ParseLaba8(inputText);
+                bool result = parser.Parse();
+                parseResults = sw.ToString().Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = true }); // Восстанавливаем консоль
+            }
+
             // Выводим результат в RichTextBox
             DisplayResults(parseResults);
         }
@@ -108,7 +115,7 @@ namespace CompilCourseWork
             }
             else
             {
-                paragraph.Inlines.Add(new Run($"Найдено {parseResults.Count} ошибок:"));
+                // paragraph.Inlines.Add(new Run($"Найдено {parseResults.Count} ошибок:"));
                 paragraph.Inlines.Add(new LineBreak());
 
                 foreach (var message in parseResults)
