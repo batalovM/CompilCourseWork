@@ -25,7 +25,8 @@ L(G[<Выражение>] = {x, a + b * c, not(xory), x * y <= z, ...}
 Согласно классификации Хомского, грамматика G[Выражение] является контекстно-свободной, так как имеет вид:
 A → α, где A∈VN, α∈V*.
 ## Схема вызова
-![1](https://github.com/user-attachments/assets/8ec7c218-89bc-4a3a-8140-7fedb670fc32)
+![{791E8646-9550-47CB-AED0-1756F972A6C3}](https://github.com/user-attachments/assets/b798e36b-9b49-4404-aabf-393234dbc694)
+
 
 
 ## Тестовые примеры
